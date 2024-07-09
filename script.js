@@ -7,7 +7,7 @@ let questions = [
         "answer_2": "Tim Berners-Lee",
         "answer_3": "Justin Bieber",
         "answer_4": "Lady Gaga",
-        "right_answer": 3
+        "right_answer": 2
     },
     {
         "question": "Wie wählst du alle Elemente vom Typ &lt;a&gt; mit dem attribut title aus ?",
@@ -91,4 +91,20 @@ function showQuestion() {
     document.getElementById('answer_3').innerHTML = question.answer_3;
     document.getElementById('answer_4').innerHTML = question.answer_4;
 
+}
+
+function answer(selection){
+    let question = questions[currentQuestion];
+    let selectedQuestionNumber = selection.slice(-1);
+
+    let idOfRightAnsswer = `answer_${question.right_answer}`
+
+    if(selectedQuestionNumber == question.right_answer)
+    {
+        document.getElementById(selection).parentNode.classList.add('bg-success')
+    }
+    else{
+        document.getElementById(selection).parentNode.classList.add('bg-danger')
+        document.getElementById(idOfRightAnsswer).parentNode.classList.add('bg-success')
+    }
 }
