@@ -8,7 +8,7 @@
     <script src="script.js"></script>
     <title>Quiz App</title>
 </head>
-<body>
+<body onload="init()">
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1">Quiz App</span>
@@ -19,34 +19,29 @@
       <div class="card quiz-card" >
         <img src="./img/question-mark-5475172_1280.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Frage</h5>
+          <h5 class="card-title" id="questiontext">Frage</h5>
 
           <div class="card mb-2">
-            <div class="card-body">
-              Antwort
-            </div>
-          </div>
-          
-          <div class="card mb-2">
-            <div class="card-body">
+            <div class="card-body" id="answer_1">
               Antwort
             </div>
           </div>
 
-          <div class="card mb-2">
-            <div class="card-body">
+
+          <div class="card mb-2" >
+            <div class="card-body" id="answer_2">
               Antwort
             </div>
           </div>
 
           <div class="card mb-2">
-            <div class="card-body">
+            <div class="card-body" id="answer_3">
               Antwort
             </div>
           </div>
 
           <div class="card mb-2">
-            <div class="card-body">
+            <div class="card-body" id="answer_4">
               Antwort
             </div>
           </div>
@@ -54,7 +49,7 @@
          <div>
 
          <div class="question-footer">
-         <span><b>1</b> von <b>5</b> Fragen</span>
+         <span><b>1</b> von <b id="questionNumber">5</b> Fragen</span>
             <button class="btn btn-primary">nächste Frage</button>
         </div>
 
