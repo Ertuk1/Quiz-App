@@ -77,6 +77,7 @@ let questions = [
 ];
 
 let currentQuestion = 0;
+let rightQuestions = 0;
 
 function init() {
     document.getElementById('questionNumber').innerHTML = questions.length
@@ -84,27 +85,63 @@ function init() {
 }
 
 function showQuestion() {
+    if(currentQuestion >= questions.length){
+        document.getElementById('endScreen').style = ''
+        document.getElementById('questionBody').style = 'display: none;'
+
+        document.getElementById('amountOfQuestion').innerHTML = questions.length
+        document.getElementById('rightQuestions').innerHTML = rightQuestions
+
+        
+    } else{
+    let percent = (currentQuestion +1) / questions.length;
     let question = questions[currentQuestion];
-    document.getElementById('questiontext').innerHTML = question.question;
+    percent = Math.round(percent * 100);
+
+    document.getElementById('progress-bar').innerHTML = `${percent}%`;
+    document.getElementById('progress-bar').style = `width:${percent}%;`;
+
+    document.getElementById('questiontext').innerHTML = question.question ;
     document.getElementById('answer_1').innerHTML = question.answer_1;
     document.getElementById('answer_2').innerHTML = question.answer_2;
     document.getElementById('answer_3').innerHTML = question.answer_3;
     document.getElementById('answer_4').innerHTML = question.answer_4;
+    document.getElementById('currentNumber').innerHTML = currentQuestion + 1}
 
 }
 
 function answer(selection){
     let question = questions[currentQuestion];
     let selectedQuestionNumber = selection.slice(-1);
-
     let idOfRightAnsswer = `answer_${question.right_answer}`
 
     if(selectedQuestionNumber == question.right_answer)
-    {
+    {   rightQuestions++
         document.getElementById(selection).parentNode.classList.add('bg-success')
     }
     else{
         document.getElementById(selection).parentNode.classList.add('bg-danger')
         document.getElementById(idOfRightAnsswer).parentNode.classList.add('bg-success')
     }
+    document.getElementById('next-Button').disabled = false;
+}   
+
+function nextQuestion(){
+currentQuestion++;
+document.getElementById('next-Button').disabled = true;
+resetAnswerButtons()
+showQuestion();
+
+}
+
+function resetAnswerButtons(){
+document.getElementById('answer_1').parentNode.classList.remove('bg-danger')
+document.getElementById('answer_1').parentNode.classList.remove('bg-success')
+document.getElementById('answer_2').parentNode.classList.remove('bg-danger')
+document.getElementById('answer_2').parentNode.classList.remove('bg-success')
+document.getElementById('answer_3').parentNode.classList.remove('bg-danger')
+document.getElementById('answer_3').parentNode.classList.remove('bg-success')
+document.getElementById('answer_4').parentNode.classList.remove('bg-danger')
+document.getElementById('answer_4').parentNode.classList.remove('bg-success')
+
 }

@@ -16,9 +16,20 @@
       </nav>
 
     <div class="container">
+      
       <div class="card quiz-card" >
+
         <img src="./img/question-mark-5475172_1280.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
+        <div class="progress" role="progressbar" aria-label="Example with label" >
+          <div id="progress-bar" class="progress-bar" style="width: 25%">25%</div>
+        </div>
+        <div class="card-body" id="endScreen" style="display: none;">
+          Quiz beendet
+
+          <div>Du hast <b id="rightQuestions"></b> Fragen von <b id="amountOfQuestion"></b> richtig beantwortet</div>
+        </div>
+
+        <div class="card-body" id="questionBody">
           <h5 class="card-title" id="questiontext">Frage</h5>
 
           <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')">
@@ -49,8 +60,8 @@
          <div>
 
          <div class="question-footer">
-         <span><b>1</b> von <b id="questionNumber">5</b> Fragen</span>
-            <button class="btn btn-primary">nächste Frage</button>
+         <span><b id="currentNumber"></b> von <b id="questionNumber"></b> Fragen</span>
+            <button onclick="nextQuestion()" class="btn btn-primary" id="next-Button" disabled>nächste Frage</button>
         </div>
 
 
